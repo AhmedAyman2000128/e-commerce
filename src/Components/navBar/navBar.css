@@ -1,0 +1,74 @@
+.nav-bar {
+  background-color: rgb(144, 2, 78);
+  color: white;
+  padding: 10px 0;
+}
+.nav-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.nav-bar .store-info {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.nav-bar .store-name {
+  margin-left: 10px;
+  font-weight: normal;
+}
+.nav-bar .search {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0 20px;
+  max-width: 600px;
+  max-width: 100%;
+}
+@media (max-width: 767px) {
+  .nav-bar .search {
+    order: 4;
+    margin: 5px 0;
+  }
+}
+.nav-bar .search button {
+  height: 35px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+  background-color: rgb(255 165 0/ 90%);
+  width: 50px;
+  cursor: pointer;
+}
+.nav-bar .search button:hover {
+  background-color: orange;
+}
+
+.nav-bar .search .search-bar {
+  flex-grow: 1;
+  height: 35px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.nav-bar .search .search-bar:focus {
+  outline: none;
+}
+.nav-bar .cart {
+  cursor: pointer;
+  position: relative;
+}
+.nav-bar .cart div {
+  background-color: orange;
+  width: 15px;
+  height: 15px;
+  bottom: -3px;
+  left: 0;
+  border-radius: 50%;
+  position: absolute;
+  display: none;
+}

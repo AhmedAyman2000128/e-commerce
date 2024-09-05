@@ -1,0 +1,63 @@
+.filter-section .container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+.filter-section .container .category-list {
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  padding: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+@media (max-width: 575px) {
+  .filter-section .container .category-list {
+    width: 100%;
+  }
+}
+.filter-section .container .price-sec {
+  display: flex;
+  justify-content: space-between;
+  width: 280px;
+}
+@media (max-width: 575px) {
+  .filter-section .container .price-sec {
+    width: 100%;
+  }
+}
+.filter-section .container .max-price {
+  height: 40px;
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+}
+@media (max-width: 575px) {
+  .filter-section .container .max-price {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Removes the spinner controls */
+}
+.filter-section .container .filter-btn {
+  height: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  width: 70px;
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.filter-section .container .filter-btn:hover {
+  opacity: 0.9;
+}

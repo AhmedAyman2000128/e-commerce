@@ -1,0 +1,64 @@
+.cart-product {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+}
+.cart-product::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  bottom: -10px;
+  left: 0;
+}
+.cart-product img {
+  width: 100px;
+  height: 100px;
+}
+.cart-product .cart-product-info {
+  padding: 5px;
+  margin-left: 5px;
+  flex-grow: 1;
+}
+
+.cart-product .cart-product-info #cat {
+  color: #999696;
+  font-size: 13px;
+}
+.cart-product .cart-product-info .amount-price {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.cart-product .cart-product-info .amount-price #amount {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  width: fit-content;
+  height: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: -1px 2px 4px -2px black;
+}
+.cart-product .cart-product-info .amount-price #amount p {
+  padding: 0 5px;
+  margin: 0;
+}
+.cart-product .cart-product-info .amount-price #amount button {
+  height: 100%;
+  width: 20px;
+  border: none;
+  cursor: pointer;
+}
+.cart-product .cart-product-info .amount-price #price {
+  font-size: 20px;
+  position: relative;
+}
+.cart-product .cart-product-info .amount-price #price::before {
+  position: absolute;
+  content: "EGP";
+  top: 0;
+  left: -20px;
+  font-size: 10px;
+}
