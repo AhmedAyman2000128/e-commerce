@@ -14,14 +14,22 @@
   width: 700px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  position: relative;
 }
 @media (max-width: 1199px) {
   .cart .container .products-in-cart {
     order: 1;
     margin-top: 30px;
-
     padding-top: 2px;
   }
+}
+.cart .container .products-in-cart .empty-cart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #a7a7a7;
+  font-size: 30px;
 }
 .cart .container .order-summary {
   display: flex;
@@ -30,14 +38,29 @@
   justify-content: space-evenly;
   flex-grow: 1;
 }
+.cart .container .order-summary #price-info {
+  display: flex;
+  flex-direction: column;
+}
 .cart .container .order-summary #price-info h2 {
   font-size: 45px;
   font-weight: lighter;
 }
 .cart .container .order-summary #price-info p {
-  text-align: center;
+  align-self: center;
+  width: fit-content;
   margin-top: 10px;
   margin-bottom: 30px;
+  position: relative;
+  font-size: 35px;
+}
+.cart .container .order-summary #price-info p::before {
+  content: "EGP";
+  position: absolute;
+  top: 2px;
+  left: -22px;
+  font-size: 10px;
+  font-weight: bold;
 }
 .cart .container .order-summary button {
   padding: 20px;

@@ -1,24 +1,36 @@
 import "./cart_product.css";
 export default function CartProduct({
-  image,
-  title,
-  price,
-  category,
-  amount = 0,
+  product,
+  handleAddClick,
+  handleRemoveClick,
 }) {
   return (
     <div className="cart-product">
-      <img src={image} alt="" />
+      <img src={product.image} alt="" />
       <div className="cart-product-info">
-        <h3>{title}</h3>
-        <p id="cat">{category}</p>
+        <h3>{product.title}</h3>
+        <p id="cat">{product.category}</p>
         <div className="amount-price">
           <div id="amount">
-            <button className="remove-btn">-</button>
-            <p>{amount}</p>
-            <button className="add-btn">+</button>
+            <button
+              className="remove-btn"
+              onClick={() => {
+                handleRemoveClick(product);
+              }}
+            >
+              -
+            </button>
+            <p>{product.count}</p>
+            <button
+              className="add-btn"
+              onClick={() => {
+                handleAddClick(product);
+              }}
+            >
+              +
+            </button>
           </div>
-          <p id="price">{price}</p>
+          <p id="price">{(product.count * product.price).toFixed(1)}</p>
         </div>
       </div>
     </div>

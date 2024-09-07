@@ -4,7 +4,7 @@ export default function ProductInfo({ product }) {
   return (
     <div className="product-info">
       <div className="container">
-        <img src={product.image} alt="" />
+        <img src={product.imgsrc} alt="" />
         <div className="info">
           <h1>{product.title || product.name}</h1>
           <h3>{product.price}</h3>

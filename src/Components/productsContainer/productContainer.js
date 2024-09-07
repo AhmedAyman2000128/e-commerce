@@ -1,8 +1,24 @@
 import "./productContainer.css";
-export default function ProductContainer({ children }) {
+import Product from "../product/product";
+export default function ProductContainer({ products, handleAddToCartClick }) {
   return (
     <div className="product-container">
-      <div className="container">{children}</div>
+      <div className="container">
+        {products.map((product) => {
+          return (
+            <Product
+              id={product.id}
+              category={product.category}
+              description={product.description}
+              imgsrc={product.image}
+              price={product.price}
+              title={product.title}
+              key={product.id}
+              handleAddToCartClick={handleAddToCartClick}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

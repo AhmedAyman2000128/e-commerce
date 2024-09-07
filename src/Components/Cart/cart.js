@@ -1,26 +1,50 @@
 import "./cart.css";
 import CartProduct from "./cart_product";
-export default function Cart({ products }) {
+import { useState } from "react";
+import {
+  getCartProducts,
+  addItemToCart,
+  removeItemFromCart,
+} from "../../cartProducts";
+export default function Cart() {
+  const [cart_products, set_cart_products] = useState(getCartProducts());
+  function handleAddClick(product) {
+    addItemToCart(product);
+    set_cart_products(getCartProducts());
+  }
+  function handleRemoveClick(product) {
+    removeItemFromCart(product);
+    set_cart_products(getCartProducts());
+  }
   return (
     <div className="cart">
       <div className="container">
         <div className="products-in-cart">
-          {products.map((product) => {
-            return (
-              <CartProduct
-                category={product.category}
-                image={product.image}
-                price={product.price}
-                title={product.name || product.title}
-              />
-            );
-          })}
+          {cart_products.length === 0 ? (
+            <div className="empty-cart">Empty Cart</div>
+          ) : (
+            cart_products.map((product) => {
+              return (
+                <CartProduct
+                  product={product}
+                  handleAddClick={handleAddClick}
+                  handleRemoveClick={handleRemoveClick}
+                />
+              );
+            })
+          )}
         </div>
         <div className="order-summary">
           <div id="price-info">
             <h2>Total Price</h2>
             <hr />
-            <p>Actual Price {/* */}</p>
+            <p>
+              {cart_products
+                .reduce((acc, product) => {
+                  return acc + product.count * product.price;
+                }, 0)
+                .toFixed(1)}
+            </p>
           </div>
           <button>Checkout</button>
         </div>

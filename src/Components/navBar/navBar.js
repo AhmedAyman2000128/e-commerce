@@ -5,11 +5,21 @@ import {
   faCartShopping,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-export default function NavBar({ isSearchShown }) {
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+export default function NavBar({ isSearchShown, handleSearchChange }) {
+  const navigate = useNavigate();
+  const [searchWord, setSearchWord] = useState("");
   return (
     <div className="nav-bar">
       <div className="container">
-        <div className="store-info">
+        <div
+          className="store-info"
+          onClick={() => {
+            window.scrollTo(0, 0);
+            navigate("/");
+          }}
+        >
           <FontAwesomeIcon icon={faStore} size="2x" />
           <h1 className="store-name">Elgondi Store</h1>
         </div>
@@ -19,15 +29,27 @@ export default function NavBar({ isSearchShown }) {
               type="text"
               placeholder="Search elgondi store"
               className="search-bar"
+              onChange={(e) => {
+                setSearchWord(e.target.value);
+              }}
             />
-            <button>
+            <button
+              onClick={() => {
+                handleSearchChange(searchWord);
+              }}
+            >
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>
         ) : null}
-        <div className="cart">
+        <div
+          className="cart"
+          onClick={() => {
+            window.scrollTo(0, 0);
+            navigate("/cart");
+          }}
+        >
           <FontAwesomeIcon icon={faCartShopping} size="2x" />
-          <div></div>
         </div>
       </div>
     </div>
