@@ -54,7 +54,37 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.price-info {
+  display: flex;
+  align-items: center;
+}
 .product-info .container .info button:hover {
   background-color: orange;
   cursor: pointer;
+}
+.productInfo-cart-product {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border: 1px solid orange;
+  border-radius: 14px;
+  height: 25px;
+  padding: 0px 10px;
+  margin-left: 4px;
+  user-select: none;
+  margin-left: 30px;
+  font-size: 20px;
+}
+.productInfo-cart-product:hover {
+  background-color: orange;
+  cursor: pointer;
+}
+.productInfo-cart-product .productInfo-minus {
+  background-color: transparent;
+  font-size: 20px;
+  padding: 6px;
+  user-select: none;
+}
+#ppp {
+  color: black;
 }

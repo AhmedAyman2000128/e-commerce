@@ -5,7 +5,7 @@ import {
   getCartProducts,
   addItemToCart,
   removeItemFromCart,
-} from "../../cartProducts";
+} from "../../cartProductsFunctions";
 export default function Cart() {
   const [cart_products, set_cart_products] = useState(getCartProducts());
   function handleAddClick(product) {
@@ -46,7 +46,15 @@ export default function Cart() {
                 .toFixed(1)}
             </p>
           </div>
-          <button>Checkout</button>
+          <button
+            onClick={() => {
+              localStorage.setItem("cartProducts", "[]");
+              alert("Successful Checkout");
+              set_cart_products([]);
+            }}
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </div>

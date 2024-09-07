@@ -6,7 +6,7 @@ export default function CartProduct({
 }) {
   return (
     <div className="cart-product">
-      <img src={product.image} alt="" />
+      <img src={product.imgsrc || product.image} alt="" />
       <div className="cart-product-info">
         <h3>{product.title}</h3>
         <p id="cat">{product.category}</p>

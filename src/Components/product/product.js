@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./product.css";
 
+import { getCartProducts } from "../../cartProductsFunctions";
+import { useState } from "react";
+
 export default function Product({
   id,
   title,
@@ -9,7 +12,14 @@ export default function Product({
   category,
   imgsrc,
   handleAddToCartClick,
+  handleRemoveFromCartClickInHome,
 }) {
+  const inCartCountIndex = getCartProducts().findIndex(
+    (product) => product.id === id
+  );
+  const [inCartCount, setInCartCount] = useState(
+    inCartCountIndex === -1 ? 0 : getCartProducts()[inCartCountIndex].count
+  );
   const navigate = useNavigate();
   const product = {
     id: id,
@@ -39,11 +49,25 @@ export default function Product({
         <button
           onClick={(e) => {
             e.stopPropagation();
+            setInCartCount((inCartCount) => inCartCount + 1);
             handleAddToCartClick(id);
           }}
         >
           Add To Cart
         </button>
+        {inCartCount !== 0 ? (
+          <div
+            className="home-cart-product"
+            onClick={(e) => {
+              e.stopPropagation();
+              setInCartCount((inCartCount) => inCartCount - 1);
+              handleRemoveFromCartClickInHome(product);
+            }}
+          >
+            <p>{inCartCount}</p>
+            <p className="cart-minus">-</p>
+          </div>
+        ) : null}
         <p className="category">{category}</p>
       </div>
     </div>

@@ -53,6 +53,7 @@
   color: #777;
   align-self: flex-end;
   font-size: 14px;
+  text-align: center;
 }
 .product .desc {
   display: -webkit-box; /* Enables multi-line truncation */
@@ -72,8 +73,30 @@
   background-color: orange;
   cursor: pointer;
 }
+.home-cart-product {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border: 1px solid orange;
+  border-radius: 14px;
+  height: 25px;
+  padding: 0px 10px;
+  margin-left: 4px;
+  user-select: none;
+}
+.home-cart-product:hover {
+  background-color: orange;
+  color: white;
+}
+.home-cart-product .cart-minus {
+  background-color: transparent;
+  font-size: 20px;
+  padding: 6px;
+  user-select: none;
+}
 .product .last {
   display: flex;
   justify-content: space-between;
   margin-top: 2px;
+  align-items: center;
 }

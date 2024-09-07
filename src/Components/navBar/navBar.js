@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 export default function NavBar({ isSearchShown, handleSearchChange }) {
   const navigate = useNavigate();
   const [searchWord, setSearchWord] = useState("");
@@ -50,6 +51,7 @@ export default function NavBar({ isSearchShown, handleSearchChange }) {
           }}
         >
           <FontAwesomeIcon icon={faCartShopping} size="2x" />
+          <div></div>
         </div>
       </div>
     </div>

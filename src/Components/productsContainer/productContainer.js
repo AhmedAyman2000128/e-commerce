@@ -1,6 +1,10 @@
 import "./productContainer.css";
 import Product from "../product/product";
-export default function ProductContainer({ products, handleAddToCartClick }) {
+export default function ProductContainer({
+  products,
+  handleAddToCartClick,
+  handleRemoveFromCartClickInHome,
+}) {
   return (
     <div className="product-container">
       <div className="container">
@@ -15,6 +19,7 @@ export default function ProductContainer({ products, handleAddToCartClick }) {
               title={product.title}
               key={product.id}
               handleAddToCartClick={handleAddToCartClick}
+              handleRemoveFromCartClickInHome={handleRemoveFromCartClickInHome}
             />
           );
         })}

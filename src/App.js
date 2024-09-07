@@ -3,7 +3,7 @@ import "./App.css";
 import "@fontsource/open-sans";
 import Home from "./Pages/home/home";
 import Loading from "./Pages/HomeLoading/loading";
-import { addItemToCart } from "./cartProducts";
+import { addItemToCart, removeItemFromCart } from "./cartProductsFunctions";
 function App() {
   //Displayed products
   const [productList, setProductList] = useState([]);
@@ -39,10 +39,10 @@ function App() {
       getProducts();
     }
   }, []);
-  function handleAll() {
+  //handle filters
+  useEffect(() => {
     setProductList(
       getProductsFromLocal().filter((product) => {
-        console.log(+product.price <= +currentMaxPrice);
         return (
           (product.category === currentCategory || currentCategory === "All") &&
           (+product.price <= +currentMaxPrice || currentMaxPrice === "") &&
@@ -50,9 +50,6 @@ function App() {
         );
       })
     );
-  }
-  useEffect(() => {
-    handleAll();
   }, [currentCategory, currentMaxPrice, currentSearch]);
   function getProductsFromLocal() {
     return JSON.parse(localStorage.getItem("products"));
@@ -72,7 +69,10 @@ function App() {
   function handleMaxPriceChange(price) {
     setCurrentMaxPrice(price);
   }
-  if (productList.length == 0 && !getProductsFromLocal()) {
+  function handleRemoveFromCartClickInHome(product) {
+    removeItemFromCart(product);
+  }
+  if (productList.length === 0 && !getProductsFromLocal()) {
     return <Loading />;
   }
   return (
@@ -90,6 +90,7 @@ function App() {
         handleCategoryChange={handleCategoryChange}
         handleSearchChange={handleSearchChange}
         handleMaxPriceChange={handleMaxPriceChange}
+        handleRemoveFromCartClickInHome={handleRemoveFromCartClickInHome}
       />
     </div>
   );

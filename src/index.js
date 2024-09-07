@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CartPage from "./Pages/Cart/cart";
-import ProductPage from "./Pages/product/product";
+import ProductPage from "./Pages/product/productPage";
 const router = createBrowserRouter([
   {
     path: "/",

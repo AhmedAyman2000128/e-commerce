@@ -1,6 +1,14 @@
+import { addItemToCart, removeItemFromCart } from "../../cartProductsFunctions";
 import "./productInfo.css";
-
+import { useState } from "react";
+import { getCartProducts } from "../../cartProductsFunctions";
 export default function ProductInfo({ product }) {
+  const inCartCountIndex = getCartProducts().findIndex(
+    (item) => item.id === product.id
+  );
+  const [inCartCount, setInCartCount] = useState(
+    inCartCountIndex === -1 ? 0 : getCartProducts()[inCartCountIndex].count
+  );
   return (
     <div className="product-info">
       <div className="container">
@@ -16,7 +24,30 @@ export default function ProductInfo({ product }) {
           <p>
             <b>Description :</b> {product.description}
           </p>
-          <button>Add To Cart</button>
+          <div className="price-info">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setInCartCount((inCartCount) => inCartCount + 1);
+                addItemToCart(product);
+              }}
+            >
+              Add To Cart
+            </button>
+            {inCartCount !== 0 ? (
+              <div
+                className="productInfo-cart-product"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setInCartCount((inCartCount) => inCartCount - 1);
+                  removeItemFromCart(product);
+                }}
+              >
+                <p id="ppp">{inCartCount}</p>
+                <p className="productInfo-minus">-</p>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

@@ -1,11 +1,9 @@
 export function getCartProducts() {
-  //   console.log(JSON.parse(localStorage.getItem("cartProducts")));
   return JSON.parse(localStorage.getItem("cartProducts"));
 }
 export function addItemToCart(product) {
   let cart_items = getCartProducts();
   let productIndex = cart_items.findIndex((item) => item.id === product.id);
-  console.log(productIndex);
   if (productIndex === -1) {
     localStorage.setItem(
       "cartProducts",
@@ -28,7 +26,6 @@ export function addItemToCart(product) {
 export function removeItemFromCart(product) {
   let cart_items = getCartProducts();
   let productIndex = cart_items.findIndex((item) => item.id === product.id);
-  console.log(productIndex);
   if (productIndex === -1) {
     return;
   } else {

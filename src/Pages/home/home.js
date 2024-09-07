@@ -9,6 +9,7 @@ export default function Home({
   handleCategoryChange,
   handleSearchChange,
   handleMaxPriceChange,
+  handleRemoveFromCartClickInHome,
 }) {
   return (
     <>
@@ -21,6 +22,7 @@ export default function Home({
       <ProductContainer
         products={products}
         handleAddToCartClick={handleAddToCartClick}
+        handleRemoveFromCartClickInHome={handleRemoveFromCartClickInHome}
       ></ProductContainer>
       <Footer />
     </>
