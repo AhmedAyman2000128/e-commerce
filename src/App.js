@@ -8,8 +8,8 @@ function App() {
   //Displayed products
   const [productList, setProductList] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("All");
-  // const [currentMaxPrice, setCurrentMaxPrice] = useState("");
-  // const [currentSearch, setCurrentSearch] = useState("");
+  const [currentMaxPrice, setCurrentMaxPrice] = useState("");
+  const [currentSearch, setCurrentSearch] = useState("");
   //Initializing cart to be empty
   if (!JSON.parse(localStorage.getItem("cartProducts"))) {
     localStorage.setItem("cartProducts", "[]");
@@ -39,10 +39,21 @@ function App() {
       getProducts();
     }
   }, []);
-  //No products return yet
-  if (productList.length == 0 && !getProductsFromLocal()) {
-    return <Loading />;
+  function handleAll() {
+    setProductList(
+      getProductsFromLocal().filter((product) => {
+        console.log(+product.price <= +currentMaxPrice);
+        return (
+          (product.category === currentCategory || currentCategory === "All") &&
+          (+product.price <= +currentMaxPrice || currentMaxPrice === "") &&
+          (product.title.includes(currentSearch) || currentSearch === "")
+        );
+      })
+    );
   }
+  useEffect(() => {
+    handleAll();
+  }, [currentCategory, currentMaxPrice, currentSearch]);
   function getProductsFromLocal() {
     return JSON.parse(localStorage.getItem("products"));
   }
@@ -51,54 +62,18 @@ function App() {
       ...productList.find((product) => product.id === product_id),
     });
   }
-  // function handleAll() {
-  //   setProductList(
-  //     getProductsFromLocal().filter((product) => {
-  //       return (
-  //         (product.category === currentCategory || currentCategory === "All") &&
-  //         (+product.price <= +currentMaxPrice || currentMaxPrice === "") &&
-  //         (product.title.includes(currentSearch) || currentSearch === "")
-  //       );
-  //     })
-  //   );
-  // }
+
   function handleCategoryChange(category) {
-    if (category === "All") {
-      setProductList(getProductsFromLocal());
-    } else {
-      setProductList(
-        getProductsFromLocal().filter(
-          (product) => product.category === category
-        )
-      );
-    }
     setCurrentCategory(category);
   }
   function handleSearchChange(text) {
-    if (text === "") {
-      setProductList(getProductsFromLocal());
-      return;
-    }
-    setProductList(
-      productList.filter((product) =>
-        product.title.toLowerCase().includes(text.toLowerCase())
-      )
-    );
+    setCurrentSearch(text);
   }
   function handleMaxPriceChange(price) {
-    if (price === "") {
-      handleCategoryChange(currentCategory);
-      return;
-    } else {
-      setProductList(
-        getProductsFromLocal().filter((product) => {
-          return (
-            +product.price <= +price &&
-            (product.category === currentCategory || product.category === "All")
-          );
-        })
-      );
-    }
+    setCurrentMaxPrice(price);
+  }
+  if (productList.length == 0 && !getProductsFromLocal()) {
+    return <Loading />;
   }
   return (
     <div className="App">
