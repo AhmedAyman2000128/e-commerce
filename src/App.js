@@ -17,10 +17,7 @@ function App() {
   //return products and add them to the local storage
   async function getProducts() {
     try {
-      //const response = await fetch("https://fakestoreapi.com/products/");
-      const response = await fetch(
-        "https://fakestoreapi.com/products/" //"https://fake-store-api.mock.beeceptor.com/api/products"
-      );
+      const response = await fetch("https://fakestoreapi.com/products/");
       if (!response.ok) {
         throw Error("Products not fetched");
       }

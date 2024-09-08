@@ -2,6 +2,7 @@ import NavBar from "../../Components/navBar/navBar";
 import FilterSection from "../../Components/filterSection/filter";
 import ProductContainer from "../../Components/productsContainer/productContainer";
 import Footer from "../../Components/Footer/footer";
+import { useEffect } from "react";
 export default function Home({
   categoryset,
   products,
@@ -11,6 +12,9 @@ export default function Home({
   handleMaxPriceChange,
   handleRemoveFromCartClickInHome,
 }) {
+  useEffect(() => {
+    document.title = "Elgondi Store";
+  }, []);
   return (
     <>
       <NavBar isSearchShown={true} handleSearchChange={handleSearchChange} />

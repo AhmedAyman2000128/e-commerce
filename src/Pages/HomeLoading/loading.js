@@ -1,6 +1,10 @@
 import NavBar from "../../Components/navBar/navBar";
 import FilterSection from "../../Components/filterSection/filter";
+import { useEffect } from "react";
 export default function Loading() {
+  useEffect(() => {
+    document.title = "Elgondi Store";
+  }, []);
   return (
     <>
       <NavBar isSearchShown={true} />
