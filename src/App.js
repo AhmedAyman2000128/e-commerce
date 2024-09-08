@@ -39,17 +39,19 @@ function App() {
       getProducts();
     }
   }, []);
-  //handle filters
   useEffect(() => {
-    setProductList(
-      getProductsFromLocal().filter((product) => {
-        return (
-          (product.category === currentCategory || currentCategory === "All") &&
-          (+product.price <= +currentMaxPrice || currentMaxPrice === "") &&
-          (product.title.includes(currentSearch) || currentSearch === "")
-        );
-      })
-    );
+    if (getProductsFromLocal()) {
+      setProductList(
+        getProductsFromLocal().filter((product) => {
+          return (
+            (product.category === currentCategory ||
+              currentCategory === "All") &&
+            (+product.price <= +currentMaxPrice || currentMaxPrice === "") &&
+            (product.title.includes(currentSearch) || currentSearch === "")
+          );
+        })
+      );
+    }
   }, [currentCategory, currentMaxPrice, currentSearch]);
   function getProductsFromLocal() {
     return JSON.parse(localStorage.getItem("products"));
