@@ -18,8 +18,6 @@ This is a React-based e-commerce application that enables users to browse produc
 
 - **React**: A JavaScript library for building user interfaces.
 - **React Router**: For handling navigation and routing.
-- **Redux** (if used): For state management.
-- **Bootstrap** or **Material-UI** (if used): For UI components and styling.
 - **Netlify**: For hosting the application.
 
 ## Getting Started
